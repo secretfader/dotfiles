@@ -1,0 +1,5 @@
+*.swp
+.netrwhist
+autoload/
+plugged/
+tmp/
