@@ -2,6 +2,8 @@
 call plug#begin('~/.vim/plugged')
 
 " Plugins
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhartington/deoplete-typescript'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
@@ -27,8 +29,6 @@ Plug 'kchmck/vim-coffee-script'
 
 " Color Schemes
 Plug 'nanotech/jellybeans.vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'chriskempson/base16-vim' " Wishful Thinking
 
 " Wrap
 call plug#end()
@@ -51,6 +51,7 @@ let g:netrw_liststyle=3
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
+let g:deoplete#enable_at_startup = 1
 
 " Kickoff
 filetype plugin indent on
