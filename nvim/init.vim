@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/deoplete-typescript'
+Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
@@ -36,6 +37,7 @@ call plug#end()
 " General Settings
 set directory=~/.vim/tmp
 set t_Co=256
+set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
@@ -52,9 +54,12 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
 let g:deoplete#enable_at_startup = 1
+let g:neomake_warning_sign = { 'text': '!', 'texthl': 'WarnMsg' }
+let g:neomake_airline = 2
 
 " Kickoff
 filetype plugin indent on
 autocmd VimResized * wincmd =
 autocmd BufNewFile,BufRead *.json set ft=javascript
 au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile,BufWritePost * Neomake
