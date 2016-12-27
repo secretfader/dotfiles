@@ -2,9 +2,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Plugins
+Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/deoplete-typescript'
-Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
@@ -18,6 +18,8 @@ Plug 'slashmili/alchemist.vim'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'flowtype/vim-flow'
+Plug 'steelsojka/deoplete-flow'
 
 " Syntax Helpers
 Plug 'plasticboy/vim-markdown'
@@ -49,7 +51,19 @@ set number
 set swapfile
 colorscheme jellybeans
 
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
+
 let g:netrw_liststyle=3
+let g:flow#autoclose = 1
+let g:javascript_plugin_flow = 1
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
