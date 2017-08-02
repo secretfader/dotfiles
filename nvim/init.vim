@@ -20,6 +20,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'flowtype/vim-flow'
 Plug 'steelsojka/deoplete-flow'
+Plug 'reedes/vim-pencil'
 
 " Syntax Helpers
 Plug 'plasticboy/vim-markdown'
@@ -56,6 +57,9 @@ function! StrTrim(txt)
 endfunction
 
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_open_list = 2
+let g:jsx_ext_required = 0
 
 if g:flow_path != 'flow not found'
   let g:deoplete#sources#flow#flow_bin = g:flow_path
@@ -63,7 +67,7 @@ endif
 
 let g:netrw_liststyle=3
 let g:flow#autoclose = 1
-let g:javascript_plugin_flow = 1
+let g:javascript_plugin_flow = 0
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
@@ -76,4 +80,4 @@ filetype plugin indent on
 autocmd VimResized * wincmd =
 autocmd BufNewFile,BufRead *.json set ft=javascript
 au BufRead,BufNewFile *.md setlocal textwidth=80
-au BufRead,BufNewFile,BufWritePost * Neomake
+au BufRead,BufNewFile,BufWritePost,BufEnter * Neomake
