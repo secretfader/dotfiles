@@ -1,6 +1,12 @@
-# dotfiles
+# `.dotfiles` :rocket:
 
 This repository contains files that can be used to configure a personal workstation for software engineering, security operations, and multimedia production.
+
+## Usage
+
+```
+curl -sSL https://raw.githubusercontent.com/secretfader/dotfiles/main/setup.sh | sh
+```
 
 ## Notice :construction:
 
